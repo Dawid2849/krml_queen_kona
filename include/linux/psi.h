@@ -37,11 +37,6 @@ void psi_trigger_destroy(struct psi_trigger *t);
 
 __poll_t psi_trigger_poll(void **trigger_ptr, struct file *file,
 			poll_table *wait);
-
-#ifdef CONFIG_SAMSUNG_LMKD_DEBUG
-extern u64 psi_full_max;
-#endif
-
 #else /* CONFIG_PSI */
 
 static inline void psi_init(void) {}
