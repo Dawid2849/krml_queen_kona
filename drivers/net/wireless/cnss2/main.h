@@ -30,7 +30,7 @@
 #define TIME_CLOCK_FREQ_HZ		19200000
 #define CNSS_RAMDUMP_MAGIC		0x574C414E
 #define CNSS_RAMDUMP_VERSION		0
-#define MAX_FIRMWARE_NAME_LEN		20
+#define MAX_FIRMWARE_NAME_LEN		30
 
 #define CNSS_EVENT_SYNC   BIT(0)
 #define CNSS_EVENT_UNINTERRUPTIBLE BIT(1)
@@ -415,6 +415,10 @@ struct cnss_plat_data {
 	int (*get_info_cb)(void *ctx, void *event, int event_len);
 	u8 use_nv_mac;
 	u8 set_wlaon_pwr_ctrl;
+
+#if IS_ENABLED(CONFIG_SEC_CNSS2)
+	struct kobject *wifi_kobj;
+#endif
 	u8 fw_pcie_gen_switch;
 	u8 pcie_gen_speed;
 	int power_up_error;
